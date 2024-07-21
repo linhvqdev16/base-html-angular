@@ -41,6 +41,12 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/eviroments/eviroment.staging.ts",
+                  "with": "src/eviroments/eviroment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -49,19 +55,26 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "optimization": true,
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true
             },
             "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
+              "fileReplacements": [
+                {
+                  "replace": "src/eviroments/eviroment.staging.ts",
+                  "with": "src/eviroments/eviroment.prod.ts"
+                }
+              ]
             }
-          },
-          "defaultConfiguration": "production"
+          }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -102,5 +115,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "1c2427ba-cc61-451f-aa3a-0e4052c85132"
   }
 }
